@@ -1,42 +1,68 @@
 @import "tailwindcss";
 
 :root {
-	--background: #ffffff;
-	--foreground: #171717;
-}
-
-@theme inline {
-	--color-background: var(--background);
-	--color-foreground: var(--foreground);
-	--font-sans: var(--font-geist-sans);
-	--font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-	:root {
-		--background: #0a0a0a;
-		--foreground: #ededed;
-	}
-}
-
-body {
-	background: var(--background);
-	color: var(--foreground);
-	font-family: Arial, Helvetica, sans-serif;
+	/* Color variables for cozy journal theme */
+	--background: #f7f3f0;
+	--foreground: #3c2e26;
+	--primary: #8b5a3c;
+	--secondary: #d4b896;
+	--accent: #a0785d;
+	--warm-white: #faf8f5;
+	--soft-brown: #6b4e3d;
 }
 
 input[type="text"],
 input[type="date"],
 input[type="range"],
 textarea {
-	color: #222 !important;
-	background: #fff !important;
-	border: 1px solid #bbb !important;
+	color: #3c2e26 !important;
+	background: #faf8f5 !important;
+	border: 2px solid #d4b896 !important;
+	border-radius: 8px;
 	font-size: 1rem;
+	box-shadow: inset 0 1px 3px rgba(139, 90, 60, 0.1);
+	transition: all 0.2s ease;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+textarea:focus {
+	border-color: #8b5a3c !important;
+	box-shadow: 0 0 0 3px rgba(139, 90, 60, 0.1),
+		inset 0 1px 3px rgba(139, 90, 60, 0.1);
+	outline: none;
 }
 
 input::placeholder,
 textarea::placeholder {
-	color: #666 !important;
+	color: #8a7264 !important;
 	opacity: 1 !important;
+}
+
+/* Removed invalid @theme inline block. Use Tailwind config for custom theme if needed. */
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--background: #2d1f1a;
+		--foreground: #f0e6d9;
+		--primary: #b8845f;
+		--secondary: #8a6b47;
+		--warm-white: #3a2b24;
+	}
+}
+
+body {
+	background: var(--background);
+	color: var(--foreground);
+	font-family: "Georgia", "Times New Roman", serif;
+	background-image: radial-gradient(
+			circle at 25% 25%,
+			rgba(139, 90, 60, 0.1) 0%,
+			transparent 50%
+		),
+		radial-gradient(
+			circle at 75% 75%,
+			rgba(212, 184, 150, 0.1) 0%,
+			transparent 50%
+		);
 }

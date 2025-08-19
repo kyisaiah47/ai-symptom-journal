@@ -58,33 +58,37 @@ export default function Dashboard() {
 		<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
 			{/* Header */}
 			<div className="mb-8">
-				<h2 className="text-4xl font-bold text-gray-900">Health Dashboard</h2>
-				<p className="mt-2 text-gray-600">
-					Track your symptoms and get AI-powered insights for better health
+				<h2 className="text-4xl font-bold text-amber-900 font-serif">
+					Health Dashboard
+				</h2>
+				<p className="mt-2 text-amber-700">
+					Track your symptoms and gentle wellness insights for mindful health
 					management.
 				</p>
 			</div>
 
 			{/* Stats Cards */}
 			<div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-				<div className="bg-white rounded-lg shadow p-6">
+				<div className="bg-gradient-to-br from-amber-50 to-orange-100 rounded-xl shadow-lg p-6 border border-amber-200">
 					<div className="flex items-center">
-						<Calendar className="h-8 w-8 text-indigo-600" />
+						<Calendar className="h-8 w-8 text-amber-700" />
 						<div className="ml-4">
-							<p className="text-sm font-medium text-gray-600">Total Entries</p>
-							<p className="text-2xl font-bold text-gray-900">
+							<p className="text-sm font-medium text-amber-700">
+								Total Entries
+							</p>
+							<p className="text-2xl font-bold text-amber-900">
 								{entries.length}
 							</p>
 						</div>
 					</div>
 				</div>
 
-				<div className="bg-white rounded-lg shadow p-6">
+				<div className="bg-gradient-to-br from-green-50 to-emerald-100 rounded-xl shadow-lg p-6 border border-green-200">
 					<div className="flex items-center">
-						<TrendingUp className="h-8 w-8 text-green-600" />
+						<TrendingUp className="h-8 w-8 text-emerald-700" />
 						<div className="ml-4">
-							<p className="text-sm font-medium text-gray-600">This Week</p>
-							<p className="text-2xl font-bold text-gray-900">
+							<p className="text-sm font-medium text-emerald-700">This Week</p>
+							<p className="text-2xl font-bold text-emerald-900">
 								{
 									entries.filter((entry) => {
 										const entryDate = new Date(entry.date);
@@ -98,12 +102,12 @@ export default function Dashboard() {
 					</div>
 				</div>
 
-				<div className="bg-white rounded-lg shadow p-6">
+				<div className="bg-gradient-to-br from-purple-50 to-violet-100 rounded-xl shadow-lg p-6 border border-purple-200">
 					<div className="flex items-center">
-						<Brain className="h-8 w-8 text-purple-600" />
+						<Brain className="h-8 w-8 text-violet-700" />
 						<div className="ml-4">
-							<p className="text-sm font-medium text-gray-600">AI Analyses</p>
-							<p className="text-2xl font-bold text-gray-900">
+							<p className="text-sm font-medium text-violet-700">AI Analyses</p>
+							<p className="text-2xl font-bold text-violet-900">
 								{entries.filter((entry) => entry.ai_summary).length}
 							</p>
 						</div>
@@ -112,7 +116,7 @@ export default function Dashboard() {
 			</div>
 
 			{/* Tab Navigation */}
-			<div className="border-b border-gray-200 mb-8">
+			<div className="border-b-2 border-amber-200 mb-8">
 				<nav className="-mb-px flex space-x-8">
 					{tabs.map((tab) => {
 						const Icon = tab.icon;
@@ -120,10 +124,10 @@ export default function Dashboard() {
 							<button
 								key={tab.id}
 								onClick={() => setActiveTab(tab.id as any)}
-								className={`py-2 px-1 border-b-2 font-medium text-sm flex items-center space-x-2 ${
+								className={`py-3 px-2 border-b-2 font-medium text-sm flex items-center space-x-2 transition-all ${
 									activeTab === tab.id
-										? "border-indigo-500 text-indigo-600"
-										: "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
+										? "border-amber-600 text-amber-800 bg-amber-50 rounded-t-lg"
+										: "border-transparent text-amber-600 hover:text-amber-800 hover:border-amber-300"
 								}`}
 							>
 								<Icon className="h-4 w-4" />
@@ -135,7 +139,15 @@ export default function Dashboard() {
 			</div>
 
 			{/* Tab Content */}
-			<div className="bg-white rounded-lg shadow min-h-[600px]">
+			<div
+				className="bg-gradient-to-br from-amber-25 to-orange-25 rounded-xl shadow-xl min-h-[600px] border border-amber-200"
+				style={{
+					background: "linear-gradient(135deg, #fefdf9 0%, #fef7ed 100%)",
+					backgroundImage: `
+					url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23d4b896' fill-opacity='0.05' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E")
+				`,
+				}}
+			>
 				{activeTab === "log" && (
 					<SymptomEntryForm onEntryAdded={handleEntryAdded} />
 				)}

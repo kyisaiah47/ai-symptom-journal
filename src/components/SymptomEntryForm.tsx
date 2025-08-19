@@ -94,8 +94,14 @@ export default function SymptomEntryForm({ onEntryAdded }: Props) {
 	};
 
 	return (
-		<div className="p-6">
-			<h3 className="text-lg font-semibold text-gray-900 mb-6">
+		<div
+			className="p-8 bg-gradient-to-br from-amber-25 to-orange-25"
+			style={{
+				background: "linear-gradient(135deg, #fefdf9 0%, #fef7ed 100%)",
+			}}
+		>
+			<h3 className="text-2xl font-bold text-amber-900 mb-6 font-serif flex items-center">
+				<span className="mr-3">📝</span>
 				Log New Symptoms
 			</h3>
 
@@ -105,20 +111,20 @@ export default function SymptomEntryForm({ onEntryAdded }: Props) {
 			>
 				{/* Date */}
 				<div>
-					<label className="block text-sm font-medium text-gray-700 mb-2">
+					<label className="block text-sm font-medium text-amber-800 mb-2 font-serif">
 						Date
 					</label>
 					<input
 						type="date"
 						value={date}
 						onChange={(e) => setDate(e.target.value)}
-						className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+						className="w-full px-4 py-3 border-2 border-amber-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-500 bg-amber-50 text-amber-900 shadow-inner"
 					/>
 				</div>
 
 				{/* Symptoms Selection */}
 				<div>
-					<label className="block text-sm font-medium text-gray-700 mb-3">
+					<label className="block text-sm font-medium text-amber-800 mb-3 font-serif">
 						Symptoms (select all that apply)
 					</label>
 					<div className="grid grid-cols-2 md:grid-cols-3 gap-3">
@@ -127,10 +133,10 @@ export default function SymptomEntryForm({ onEntryAdded }: Props) {
 								key={symptom}
 								type="button"
 								onClick={() => handleSymptomToggle(symptom)}
-								className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+								className={`px-4 py-3 rounded-xl text-sm font-medium transition-all shadow-sm ${
 									selectedSymptoms.includes(symptom)
-										? "bg-indigo-600 text-white"
-										: "bg-gray-100 text-gray-700 hover:bg-gray-200"
+										? "bg-gradient-to-r from-amber-600 to-orange-600 text-white shadow-lg transform scale-105"
+										: "bg-amber-100 text-amber-800 hover:bg-amber-200 border border-amber-300"
 								}`}
 							>
 								{symptom}
@@ -141,28 +147,28 @@ export default function SymptomEntryForm({ onEntryAdded }: Props) {
 
 				{/* Severity Scale */}
 				<div>
-					<label className="block text-sm font-medium text-gray-700 mb-3">
+					<label className="block text-sm font-medium text-amber-800 mb-3 font-serif">
 						Overall Severity: {getSeverityLabel(severity)} ({severity}/8)
 					</label>
-					<div className="flex items-center space-x-2">
-						<span className="text-sm text-gray-600">Mild</span>
+					<div className="flex items-center space-x-3 bg-amber-50 p-4 rounded-xl border border-amber-200">
+						<span className="text-sm text-amber-700 font-medium">Mild</span>
 						<input
 							type="range"
 							min="1"
 							max="8"
 							value={severity}
 							onChange={(e) => setSeverity(Number(e.target.value))}
-							className="flex-1"
+							className="flex-1 h-2 bg-amber-200 rounded-lg appearance-none cursor-pointer slider"
 						/>
-						<span className="text-sm text-gray-600">Severe</span>
+						<span className="text-sm text-amber-700 font-medium">Severe</span>
 					</div>
-					<div className="mt-2 flex items-center">
+					<div className="mt-3 flex items-center justify-center">
 						<div
-							className={`w-4 h-4 rounded-full ${getSeverityColor(
+							className={`w-5 h-5 rounded-full ${getSeverityColor(
 								severity
-							)} mr-2`}
+							)} mr-3 shadow-sm`}
 						></div>
-						<span className="text-sm text-gray-700">
+						<span className="text-base text-amber-800 font-medium">
 							{getSeverityLabel(severity)}
 						</span>
 					</div>
@@ -170,7 +176,7 @@ export default function SymptomEntryForm({ onEntryAdded }: Props) {
 
 				{/* Notes */}
 				<div>
-					<label className="block text-sm font-medium text-gray-700 mb-2">
+					<label className="block text-sm font-medium text-amber-800 mb-2 font-serif">
 						Additional Notes
 					</label>
 					<textarea
@@ -178,7 +184,7 @@ export default function SymptomEntryForm({ onEntryAdded }: Props) {
 						onChange={(e) => setNotes(e.target.value)}
 						placeholder="Describe how you're feeling, what might have triggered symptoms, or any other relevant details..."
 						rows={4}
-						className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+						className="w-full px-4 py-3 border-2 border-amber-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-500 bg-amber-50 text-amber-900 placeholder-amber-600 shadow-inner resize-none"
 					/>
 				</div>
 
@@ -219,9 +225,9 @@ export default function SymptomEntryForm({ onEntryAdded }: Props) {
 				<button
 					type="submit"
 					disabled={isSubmitting || selectedSymptoms.length === 0}
-					className="w-full flex items-center justify-center px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
+					className="w-full flex items-center justify-center px-6 py-4 bg-gradient-to-r from-amber-600 to-orange-600 text-white rounded-xl hover:from-amber-700 hover:to-orange-700 disabled:from-gray-400 disabled:to-gray-500 disabled:cursor-not-allowed transition-all transform hover:scale-105 shadow-lg font-medium"
 				>
-					<Save className="h-4 w-4 mr-2" />
+					<Save className="h-5 w-5 mr-2" />
 					{isSubmitting ? "Saving..." : "Save Entry"}
 				</button>
 			</form>
