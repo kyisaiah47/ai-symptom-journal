@@ -1,4 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+A modern web application for tracking health symptoms, generating AI-powered health insights, and visualizing health patterns over time. Built with Next.js, TypeScript, Supabase, and Google Gemini API.
+
+## Features
+
+- Log daily symptoms, severity, and notes
+- View health timelines and pattern analysis
+- Get AI-generated health summaries and recommendations
+- Doctor report and quick stats
+- Responsive, user-friendly UI
+
+## Tech Stack
+
+- **Next.js** (React framework)
+- **TypeScript**
+- **Supabase** (database & auth)
+- **Google Gemini API** (AI insights)
+- **Tailwind CSS** (styling)
+- **Lucide Icons**
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v18+ recommended)
+- Supabase project & API keys
+- Google Gemini API key
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/symptom-journal.git
+   cd symptom-journal
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Set up environment variables:
+   - Copy `.env.local.example` to `.env.local` and fill in your Supabase and Gemini API keys.
+
+### Running Locally
+
+```bash
+npm run dev
+```
+
+Visit [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Project Structure
+
+```
+public/           # Static assets
+src/
+  api/            # API routes
+  app/            # Next.js app directory
+  components/     # React components
+  lib/            # Utility libraries (Supabase, Gemini)
+```
+
+## Environment Variables
+
+- `NEXT_PUBLIC_SUPABASE_URL` - Supabase project URL
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY` - Supabase anon key
+- `NEXT_PUBLIC_GOOGLE_API_KEY` - Google Gemini API key
+
+## Deployment
+
+You can deploy to Vercel or any platform supporting Next.js. Set environment variables in your deployment dashboard.
+
+## License
+
+MIT
+
+## Disclaimer
+
+AI insights are for informational purposes only and do not replace professional medical advice.
 
 ## Getting Started
 
