@@ -1,4 +1,5 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import { SymptomEntry } from "@/lib/supabase";
 
 const genAI = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_GOOGLE_API_KEY!);
 const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
@@ -12,7 +13,7 @@ export interface SymptomAnalysis {
 }
 
 export async function analyzeSymptoms(
-	entries: any[]
+	entries: SymptomEntry[]
 ): Promise<SymptomAnalysis> {
 	const prompt = `
     As a healthcare AI assistant, analyze the following symptom entries and provide:
@@ -57,7 +58,7 @@ export async function analyzeSymptoms(
 }
 
 export async function generateHealthInsights(
-	entries: any[]
+	entries: SymptomEntry[]
 ): Promise<string[]> {
 	const prompt = `
     Analyze these health entries for patterns and correlations:

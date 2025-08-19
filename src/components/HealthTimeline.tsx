@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { format } from "date-fns";
-import { Calendar, Clock, AlertCircle } from "lucide-react";
+import { Calendar, Clock } from "lucide-react";
 import { SymptomEntry } from "@/lib/supabase";
 import {
 	LineChart,

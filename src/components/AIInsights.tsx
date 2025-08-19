@@ -1,13 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import {
-	Brain,
-	TrendingUp,
-	AlertTriangle,
-	Lightbulb,
-	RefreshCw,
-} from "lucide-react";
+import { SymptomAnalysis } from "@/lib/gemini";
+import { Brain, TrendingUp, AlertTriangle, RefreshCw } from "lucide-react";
 import { SymptomEntry } from "@/lib/supabase";
 import { generateHealthInsights, analyzeSymptoms } from "@/lib/gemini";
 
@@ -17,7 +12,7 @@ interface Props {
 
 export default function AIInsights({ entries }: Props) {
 	const [insights, setInsights] = useState<string[]>([]);
-	const [analysis, setAnalysis] = useState<any>(null);
+	const [analysis, setAnalysis] = useState<SymptomAnalysis | null>(null);
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState("");
 
@@ -33,7 +28,7 @@ export default function AIInsights({ entries }: Props) {
 			// Generate overall analysis
 			const overallAnalysis = await analyzeSymptoms(entries);
 			setAnalysis(overallAnalysis);
-		} catch (err: any) {
+		} catch (err: unknown) {
 			setError("Failed to generate AI insights. Please try again.");
 			console.error("AI Insights Error:", err);
 		} finally {
@@ -52,16 +47,7 @@ export default function AIInsights({ entries }: Props) {
 		}
 	};
 
-	const getUrgencyIcon = (urgency: string) => {
-		switch (urgency) {
-			case "high":
-				return AlertTriangle;
-			case "medium":
-				return TrendingUp;
-			default:
-				return Lightbulb;
-		}
-	};
+	// Removed unused function getUrgencyIcon
 
 	if (entries.length === 0) {
 		return (
