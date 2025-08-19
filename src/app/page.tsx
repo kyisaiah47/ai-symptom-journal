@@ -49,7 +49,7 @@ export default function Dashboard() {
 	if (loading) {
 		return (
 			<div className="flex items-center justify-center min-h-screen">
-				<div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600"></div>
+				<div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-600"></div>
 			</div>
 		);
 	}
@@ -58,7 +58,6 @@ export default function Dashboard() {
 		<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
 			{/* Header */}
 			<div className="mb-8">
-				<h2 className="text-4xl font-bold text-amber-900">Health Dashboard</h2>
 				<p className="mt-2 text-amber-700">
 					Track your symptoms and gentle wellness insights for mindful health
 					management.
@@ -100,12 +99,12 @@ export default function Dashboard() {
 					</div>
 				</div>
 
-				<div className="bg-gradient-to-br from-purple-50 to-violet-100 rounded-xl shadow-lg p-6 border border-purple-200">
+				<div className="bg-gradient-to-br from-orange-50 to-red-100 rounded-xl shadow-lg p-6 border border-orange-200">
 					<div className="flex items-center">
-						<Brain className="h-8 w-8 text-violet-700" />
+						<Brain className="h-8 w-8 text-orange-700" />
 						<div className="ml-4">
-							<p className="text-sm font-medium text-violet-700">AI Analyses</p>
-							<p className="text-2xl font-bold text-violet-900">
+							<p className="text-sm font-medium text-orange-700">AI Analyses</p>
+							<p className="text-2xl font-bold text-orange-900">
 								{entries.filter((entry) => entry.ai_summary).length}
 							</p>
 						</div>

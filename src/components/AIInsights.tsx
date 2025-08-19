@@ -85,7 +85,7 @@ export default function AIInsights({ entries }: Props) {
 				<button
 					onClick={generateInsights}
 					disabled={loading}
-					className="flex items-center px-3 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 disabled:bg-gray-400 transition-colors"
+					className="flex items-center px-3 py-2 bg-gradient-to-r from-orange-600 to-red-600 text-white rounded-lg hover:from-orange-700 hover:to-red-700 disabled:bg-gray-400 transition-all shadow-lg"
 				>
 					<RefreshCw
 						className={`h-4 w-4 mr-2 ${loading ? "animate-spin" : ""}`}
@@ -105,8 +105,8 @@ export default function AIInsights({ entries }: Props) {
 
 			{loading && (
 				<div className="text-center py-8">
-					<div className="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-600 mx-auto mb-4"></div>
-					<p className="text-gray-600">
+					<div className="animate-spin rounded-full h-8 w-8 border-b-2 border-orange-600 mx-auto mb-4"></div>
+					<p className="text-amber-700">
 						AI is analyzing your health patterns...
 					</p>
 				</div>
@@ -115,7 +115,7 @@ export default function AIInsights({ entries }: Props) {
 			{/* Overall Health Analysis */}
 			{analysis && !loading && (
 				<div className="mb-8">
-					<div className="bg-gradient-to-r from-indigo-50 to-blue-50 rounded-lg p-6 border border-indigo-200">
+					<div className="bg-gradient-to-r from-orange-50 to-red-50 rounded-lg p-6 border border-orange-200">
 						<div className="flex items-start justify-between mb-4">
 							<h4 className="text-lg font-medium text-amber-900">
 								Health Summary
@@ -145,7 +145,7 @@ export default function AIInsights({ entries }: Props) {
 													key={index}
 													className="text-sm text-amber-800 flex items-start"
 												>
-													<span className="text-indigo-500 mr-2">•</span>
+													<span className="text-orange-500 mr-2">•</span>
 													{rec}
 												</li>
 											)
@@ -224,7 +224,7 @@ export default function AIInsights({ entries }: Props) {
 					}}
 				>
 					<div className="text-center">
-						<p className="text-2xl font-bold text-violet-700">
+						<p className="text-2xl font-bold text-orange-700">
 							{
 								Array.from(new Set(entries.flatMap((entry) => entry.symptoms)))
 									.length
@@ -264,9 +264,9 @@ export default function AIInsights({ entries }: Props) {
 								>
 									<span className="text-sm text-amber-800">{symptom}</span>
 									<div className="flex items-center">
-										<div className="w-20 bg-gray-200 rounded-full h-2 mr-2">
+										<div className="w-20 bg-amber-200 rounded-full h-2 mr-2">
 											<div
-												className="bg-indigo-600 h-2 rounded-full"
+												className="bg-gradient-to-r from-orange-600 to-red-600 h-2 rounded-full"
 												style={{ width: `${(count / entries.length) * 100}%` }}
 											></div>
 										</div>

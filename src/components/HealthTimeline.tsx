@@ -71,8 +71,8 @@ export default function HealthTimeline({ entries }: Props) {
 						onClick={() => setViewMode("timeline")}
 						className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
 							viewMode === "timeline"
-								? "bg-white text-indigo-600 shadow-sm"
-								: "text-gray-600 hover:text-gray-900"
+								? "bg-gradient-to-r from-orange-100 to-red-100 text-orange-800 shadow-sm"
+								: "text-amber-600 hover:text-amber-800"
 						}`}
 					>
 						Timeline
@@ -81,8 +81,8 @@ export default function HealthTimeline({ entries }: Props) {
 						onClick={() => setViewMode("chart")}
 						className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
 							viewMode === "chart"
-								? "bg-white text-indigo-600 shadow-sm"
-								: "text-gray-600 hover:text-gray-900"
+								? "bg-gradient-to-r from-orange-100 to-red-100 text-orange-800 shadow-sm"
+								: "text-amber-600 hover:text-amber-800"
 						}`}
 					>
 						Chart
@@ -119,9 +119,9 @@ export default function HealthTimeline({ entries }: Props) {
 								<Line
 									type="monotone"
 									dataKey="severity"
-									stroke="#4f46e5"
+									stroke="#ea580c"
 									strokeWidth={3}
-									dot={{ fill: "#4f46e5", strokeWidth: 2, r: 4 }}
+									dot={{ fill: "#ea580c", strokeWidth: 2, r: 4 }}
 								/>
 								<Line
 									type="monotone"
@@ -135,12 +135,12 @@ export default function HealthTimeline({ entries }: Props) {
 					</div>
 					<div className="flex justify-center mt-4 space-x-6">
 						<div className="flex items-center">
-							<div className="w-3 h-3 bg-indigo-600 rounded-full mr-2"></div>
-							<span className="text-sm text-gray-600">Severity</span>
+							<div className="w-3 h-3 bg-gradient-to-r from-orange-600 to-red-600 rounded-full mr-2"></div>
+							<span className="text-sm text-amber-800">Severity</span>
 						</div>
 						<div className="flex items-center">
-							<div className="w-3 h-3 bg-green-600 rounded-full mr-2"></div>
-							<span className="text-sm text-gray-600">Symptom Count</span>
+							<div className="w-3 h-3 bg-emerald-600 rounded-full mr-2"></div>
+							<span className="text-sm text-amber-800">Symptom Count</span>
 						</div>
 					</div>
 				</div>
@@ -183,7 +183,7 @@ export default function HealthTimeline({ entries }: Props) {
 												{entry.symptoms.map((symptom, idx) => (
 													<span
 														key={idx}
-														className="px-2 py-1 bg-indigo-100 text-indigo-800 text-xs rounded-full"
+														className="px-2 py-1 bg-gradient-to-r from-orange-100 to-red-100 text-orange-800 text-xs rounded-full"
 													>
 														{symptom}
 													</span>
@@ -248,7 +248,7 @@ export default function HealthTimeline({ entries }: Props) {
 										{selectedEntry.symptoms.map((symptom, idx) => (
 											<span
 												key={idx}
-												className="px-3 py-1 bg-indigo-100 text-indigo-800 text-sm rounded-full"
+												className="px-3 py-1 bg-gradient-to-r from-orange-100 to-red-100 text-orange-800 text-sm rounded-full"
 											>
 												{symptom}
 											</span>
