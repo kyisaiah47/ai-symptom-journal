@@ -26,7 +26,7 @@ export default function RootLayout({
 									<div className="w-10 h-10 bg-gradient-to-br from-amber-600 to-orange-700 rounded-xl flex items-center justify-center mr-3 shadow-lg">
 										<span className="text-white font-bold text-lg">📓</span>
 									</div>
-									<h1 className="text-2xl font-bold text-amber-900 font-serif">
+									<h1 className="text-2xl font-bold text-amber-900">
 										Wellness Journal
 									</h1>
 								</div>

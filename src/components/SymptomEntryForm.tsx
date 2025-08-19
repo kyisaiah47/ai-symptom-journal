@@ -94,13 +94,8 @@ export default function SymptomEntryForm({ onEntryAdded }: Props) {
 	};
 
 	return (
-		<div
-			className="p-8 bg-gradient-to-br from-amber-25 to-orange-25"
-			style={{
-				background: "linear-gradient(135deg, #fefdf9 0%, #fef7ed 100%)",
-			}}
-		>
-			<h3 className="text-2xl font-bold text-amber-900 mb-6 font-serif flex items-center">
+		<div className="p-8 from-amber-25 to-orange-25 ">
+			<h3 className="text-2xl font-bold text-amber-900 mb-6 flex items-center">
 				<span className="mr-3">📝</span>
 				Log New Symptoms
 			</h3>
@@ -111,7 +106,7 @@ export default function SymptomEntryForm({ onEntryAdded }: Props) {
 			>
 				{/* Date */}
 				<div>
-					<label className="block text-sm font-medium text-amber-800 mb-2 font-serif">
+					<label className="block text-sm font-medium text-amber-800 mb-2">
 						Date
 					</label>
 					<input
@@ -124,7 +119,7 @@ export default function SymptomEntryForm({ onEntryAdded }: Props) {
 
 				{/* Symptoms Selection */}
 				<div>
-					<label className="block text-sm font-medium text-amber-800 mb-3 font-serif">
+					<label className="block text-sm font-medium text-amber-800 mb-3">
 						Symptoms (select all that apply)
 					</label>
 					<div className="grid grid-cols-2 md:grid-cols-3 gap-3">
@@ -147,7 +142,7 @@ export default function SymptomEntryForm({ onEntryAdded }: Props) {
 
 				{/* Severity Scale */}
 				<div>
-					<label className="block text-sm font-medium text-amber-800 mb-3 font-serif">
+					<label className="block text-sm font-medium text-amber-800 mb-3">
 						Overall Severity: {getSeverityLabel(severity)} ({severity}/8)
 					</label>
 					<div className="flex items-center space-x-3 bg-amber-50 p-4 rounded-xl border border-amber-200">
@@ -176,7 +171,7 @@ export default function SymptomEntryForm({ onEntryAdded }: Props) {
 
 				{/* Notes */}
 				<div>
-					<label className="block text-sm font-medium text-amber-800 mb-2 font-serif">
+					<label className="block text-sm font-medium text-amber-800 mb-2">
 						Additional Notes
 					</label>
 					<textarea

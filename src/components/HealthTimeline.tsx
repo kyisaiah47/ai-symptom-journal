@@ -49,11 +49,11 @@ export default function HealthTimeline({ entries }: Props) {
 	if (entries.length === 0) {
 		return (
 			<div className="p-6 text-center">
-				<Calendar className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-				<h3 className="text-lg font-medium text-gray-900 mb-2">
+				<Calendar className="h-12 w-12 text-amber-400 mx-auto mb-4" />
+				<h3 className="text-lg font-medium text-amber-900 mb-2">
 					No Entries Yet
 				</h3>
-				<p className="text-gray-600">
+				<p className="text-amber-700">
 					Start logging your symptoms to see your health timeline.
 				</p>
 			</div>
@@ -63,8 +63,10 @@ export default function HealthTimeline({ entries }: Props) {
 	return (
 		<div className="p-6">
 			<div className="flex justify-between items-center mb-6">
-				<h3 className="text-lg font-semibold text-gray-900">Health Timeline</h3>
-				<div className="flex bg-gray-100 rounded-lg p-1">
+				<h3 className="text-lg font-semibold text-amber-900">
+					Health Timeline
+				</h3>
+				<div className="flex bg-amber-100 rounded-lg p-1">
 					<button
 						onClick={() => setViewMode("timeline")}
 						className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
@@ -89,8 +91,13 @@ export default function HealthTimeline({ entries }: Props) {
 			</div>
 
 			{viewMode === "chart" ? (
-				<div className="bg-white border border-gray-200 rounded-lg p-4">
-					<h4 className="font-medium text-gray-900 mb-4">Severity Trend</h4>
+				<div
+					className="border border-amber-200 rounded-lg p-4"
+					style={{
+						background: "linear-gradient(135deg, #fefcf7 0%, #fef7ed 100%)",
+					}}
+				>
+					<h4 className="font-medium text-amber-900 mb-4">Severity Trend</h4>
 					<div className="h-80">
 						<ResponsiveContainer
 							width="100%"
@@ -146,7 +153,11 @@ export default function HealthTimeline({ entries }: Props) {
 						.map((entry, index) => (
 							<div
 								key={entry.id}
-								className="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow cursor-pointer"
+								className="border border-amber-200 rounded-lg p-4 hover:shadow-md transition-shadow cursor-pointer"
+								style={{
+									background:
+										"linear-gradient(135deg, #fefcf7 0%, #fef7ed 100%)",
+								}}
 								onClick={() => setSelectedEntry(entry)}
 							>
 								<div className="flex items-start justify-between">

@@ -54,7 +54,7 @@ textarea::placeholder {
 body {
 	background: var(--background);
 	color: var(--foreground);
-	font-family: "Georgia", "Times New Roman", serif;
+	font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
 	background-image: radial-gradient(
 			circle at 25% 25%,
 			rgba(139, 90, 60, 0.1) 0%,
