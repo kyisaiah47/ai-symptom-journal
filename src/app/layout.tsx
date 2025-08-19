@@ -19,12 +19,12 @@ export default function RootLayout({
 		<html lang="en">
 			<body className={inter.className}>
 				<div className="min-h-screen bg-[#f1f1f1]">
-					<nav className="bg-white shadow-sm border-b">
+					<nav>
 						<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-							<div className="flex justify-between h-16">
+							<div className="flex justify-between pt-20">
 								<div className="flex items-center">
-									<h1 className="text-xl font-bold text-gray-900">
-										🏥 AI Symptom Journal
+									<h1 className="text-md font-bold text-purple-600">
+										AI Symptom Journal
 									</h1>
 								</div>
 								<div className="flex items-center space-x-4">
