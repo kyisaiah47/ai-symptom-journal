@@ -21,8 +21,21 @@ const physicalSymptoms = [
 	"Stomach Pain",
 	"Back Pain",
 	"Shortness of Breath",
+	"Skin issues (rashes, itching)",
+	"Vision/hearing problems",
+	"Temperature regulation (chills, sweating)",
+	"Appetite changes",
+	"Bowel/urinary issues",
 ];
-const mentalSymptoms = ["Sleep Issues", "Anxiety"];
+const mentalSymptoms = [
+	"Sleep Issues",
+	"Anxiety",
+	"Depression/low mood",
+	"Irritability/anger",
+	"Concentration issues",
+	"Mood swings",
+	"Panic attacks",
+];
 
 export default function SymptomEntryForm({ onEntryAdded }: Props) {
 	const [selectedSymptoms, setSelectedSymptoms] = useState<string[]>([]);
