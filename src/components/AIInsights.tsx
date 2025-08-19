@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
 	Brain,
 	TrendingUp,
@@ -20,12 +20,6 @@ export default function AIInsights({ entries }: Props) {
 	const [analysis, setAnalysis] = useState<any>(null);
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState("");
-
-	useEffect(() => {
-		if (entries.length > 0) {
-			generateInsights();
-		}
-	}, [entries]);
 
 	const generateInsights = async () => {
 		setLoading(true);
