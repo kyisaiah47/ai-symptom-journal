@@ -8,7 +8,7 @@ interface Props {
 	onEntryAdded: () => void;
 }
 
-const commonSymptoms = [
+const physicalSymptoms = [
 	"Headache",
 	"Fatigue",
 	"Nausea",
@@ -18,12 +18,11 @@ const commonSymptoms = [
 	"Muscle Pain",
 	"Joint Pain",
 	"Dizziness",
-	"Sleep Issues",
-	"Anxiety",
 	"Stomach Pain",
 	"Back Pain",
 	"Shortness of Breath",
 ];
+const mentalSymptoms = ["Sleep Issues", "Anxiety"];
 
 export default function SymptomEntryForm({ onEntryAdded }: Props) {
 	const [selectedSymptoms, setSelectedSymptoms] = useState<string[]>([]);
@@ -72,8 +71,8 @@ export default function SymptomEntryForm({ onEntryAdded }: Props) {
 			setDate(new Date().toISOString().split("T")[0]);
 
 			onEntryAdded();
-		} catch (err: any) {
-			setError(err.message || "Failed to save entry");
+		} catch (err) {
+			setError(err instanceof Error ? err.message : "Failed to save entry");
 		} finally {
 			setIsSubmitting(false);
 		}
@@ -94,11 +93,9 @@ export default function SymptomEntryForm({ onEntryAdded }: Props) {
 	};
 
 	return (
-		<div className="p-8">
+		<div className="p-8 ">
 			<h3 className="text-2xl font-bold text-amber-900 mb-8 flex items-center gap-2">
-				<span className="inline-flex items-center justify-center h-8 w-8 rounded-full bg-orange-100 text-orange-600 mr-2">
-					📝
-				</span>
+				<Save className="h-8 w-8 bg-orange-100 text-orange-600 rounded-full p-1 mr-2" />
 				Log New Symptoms
 			</h3>
 
@@ -115,42 +112,83 @@ export default function SymptomEntryForm({ onEntryAdded }: Props) {
 						type="date"
 						value={date}
 						onChange={(e) => setDate(e.target.value)}
-						className="w-full px-4 py-3 border-2 border-amber-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 bg-amber-50 text-amber-900 shadow-inner"
+						className="w-full px-4 py-3 border-2 border-amber-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-orange-500 bg-amber-50 text-amber-900 shadow-lg"
 					/>
 				</div>
 
 				{/* Symptoms Selection */}
 				<div>
-					<label className="block text-sm font-medium text-amber-800 mb-3">
-						Symptoms (select all that apply)
+					<label className="block text-base font-semibold text-orange-700 mb-4">
+						Symptoms{" "}
+						<span className="text-xs font-normal text-amber-600 ml-2 bg-orange-50 px-2 py-1 rounded-xl">
+							select all that apply
+						</span>
 					</label>
-					<div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-						{commonSymptoms.map((symptom) => (
-							<button
-								key={symptom}
-								type="button"
-								onClick={() => handleSymptomToggle(symptom)}
-								className={`px-4 py-3 rounded-2xl text-base font-semibold transition-all duration-150 shadow-sm group ${
-									selectedSymptoms.includes(symptom)
-										? "bg-gradient-to-r from-orange-400 to-amber-600 text-white shadow-lg scale-105 border-2 border-orange-500"
-										: "bg-amber-100 text-amber-800 hover:bg-orange-100 border border-amber-300 group-hover:shadow-md"
-								}`}
-							>
-								<span className="inline-flex items-center gap-2">
-									<AlertCircle className="h-4 w-4 text-orange-500" />
-									{symptom}
-								</span>
-							</button>
-						))}
+					<div className="mb-4">
+						<div className="text-sm font-bold text-amber-800 mb-2">
+							Physical
+						</div>
+						<div className="grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-2 mb-4">
+							{physicalSymptoms.map((symptom) => (
+								<button
+									key={symptom}
+									type="button"
+									onClick={() => handleSymptomToggle(symptom)}
+									className={`px-4 py-3 rounded-2xl text-base font-semibold transition-all duration-150 shadow-sm group focus:outline-none focus:ring-2 focus:ring-orange-400 border-2 ${
+										selectedSymptoms.includes(symptom)
+											? "bg-gradient-to-r from-orange-400 to-amber-600 text-white shadow-lg scale-105 border-orange-700"
+											: "bg-amber-100 text-amber-800 hover:bg-orange-100 border-amber-300 group-hover:shadow-md"
+									}`}
+								>
+									<span className="inline-flex items-center gap-2">
+										{symptom}
+									</span>
+								</button>
+							))}
+						</div>
+						<div className="text-sm font-bold text-amber-800 mb-2 mt-6">
+							Mental / Emotional
+						</div>
+						<div className="grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-2">
+							{mentalSymptoms.map((symptom) => (
+								<button
+									key={symptom}
+									type="button"
+									onClick={() => handleSymptomToggle(symptom)}
+									className={`px-4 py-3 rounded-2xl text-base font-semibold transition-all duration-150 shadow-sm group focus:outline-none focus:ring-2 focus:ring-orange-400 border-2 ${
+										selectedSymptoms.includes(symptom)
+											? "bg-gradient-to-r from-orange-400 to-amber-600 text-white shadow-lg scale-105 border-orange-700"
+											: "bg-amber-100 text-amber-800 hover:bg-orange-100 border-amber-300 group-hover:shadow-md"
+									}`}
+								>
+									<span className="inline-flex items-center gap-2">
+										{symptom}
+									</span>
+								</button>
+							))}
+						</div>
+					</div>
+					<div className="flex justify-end mt-2">
+						<button
+							type="button"
+							onClick={() => setSelectedSymptoms([])}
+							className="px-4 py-2 text-sm font-medium rounded-xl bg-amber-100 text-amber-700 hover:bg-orange-200 border border-amber-300 shadow-sm transition-all"
+						>
+							Clear All
+						</button>
 					</div>
 				</div>
 
 				{/* Severity Scale */}
 				<div>
-					<label className="block text-sm font-medium text-amber-800 mb-3">
-						Overall Severity: {getSeverityLabel(severity)} ({severity}/8)
+					<label className="block text-base font-semibold text-orange-700 mb-3">
+						Overall Severity:{" "}
+						<span className="font-bold text-orange-900">
+							{getSeverityLabel(severity)}
+						</span>{" "}
+						<span className="text-xs text-amber-600">({severity}/8)</span>
 					</label>
-					<div className="flex items-center space-x-3 bg-amber-50 p-4 rounded-xl border border-amber-200">
+					<div className="flex items-center space-x-3 bg-amber-50 p-4 rounded-2xl border border-amber-200 shadow-md">
 						<span className="text-sm text-amber-700 font-medium">Mild</span>
 						<input
 							type="range"
