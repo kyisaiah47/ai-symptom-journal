@@ -19,27 +19,6 @@ export default function RootLayout({
 		<html lang="en">
 			<body className={inter.className}>
 				<div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50">
-					<nav>
-						<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-							<div className="flex justify-between pt-20">
-								<div className="flex items-center">
-									<div className="p-4 bg-gradient-to-br from-amber-600 to-orange-700 rounded-xl flex items-center justify-center mr-3 shadow-lg">
-										<span className="text-white font-bold text-2xl mr-2">
-											📓
-										</span>
-										<h1 className="text-3xl font-bold text-white-900">
-											Wellness Journal
-										</h1>
-									</div>
-								</div>
-								<div className="flex items-center space-x-4">
-									<span className="text-sm text-amber-700 italic">
-										Your cozy health companion
-									</span>
-								</div>
-							</div>
-						</div>
-					</nav>
 					<main>{children}</main>
 				</div>
 			</body>

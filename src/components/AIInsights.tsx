@@ -65,10 +65,12 @@ export default function AIInsights({ entries }: Props) {
 
 	if (entries.length === 0) {
 		return (
-			<div className="p-6 text-center">
-				<Brain className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-				<h3 className="text-lg font-medium text-amber-900 mb-2">No Data Yet</h3>
-				<p className="text-amber-700">
+			<div className="p-8 text-center bg-amber-50 border border-amber-200 rounded-2xl shadow-md mb-8">
+				<Brain className="h-14 w-14 text-orange-500 mx-auto mb-4" />
+				<h3 className="text-2xl font-bold text-amber-900 mb-3 flex items-center justify-center gap-2">
+					No Data Yet
+				</h3>
+				<p className="text-lg text-amber-700 mb-2">
 					Add some symptom entries to see AI-powered insights about your health
 					patterns.
 				</p>
@@ -77,18 +79,19 @@ export default function AIInsights({ entries }: Props) {
 	}
 
 	return (
-		<div className="p-6">
-			<div className="flex justify-between items-center mb-6">
-				<h3 className="text-lg font-semibold text-amber-900">
+		<div className="p-8">
+			<div className="flex justify-between items-center mb-8">
+				<h3 className="text-2xl font-bold text-amber-900 flex items-center gap-2">
+					<Brain className="h-7 w-7 text-orange-500" />
 					AI Health Insights
 				</h3>
 				<button
 					onClick={generateInsights}
 					disabled={loading}
-					className="flex items-center px-3 py-2 bg-gradient-to-r from-orange-600 to-red-600 text-white rounded-lg hover:from-orange-700 hover:to-red-700 disabled:bg-gray-400 transition-all shadow-lg"
+					className="flex items-center px-4 py-2 bg-gradient-to-r from-orange-600 to-red-600 text-white rounded-xl hover:from-orange-700 hover:to-red-700 disabled:bg-gray-400 transition-all shadow-lg text-base font-semibold"
 				>
 					<RefreshCw
-						className={`h-4 w-4 mr-2 ${loading ? "animate-spin" : ""}`}
+						className={`h-5 w-5 mr-2 ${loading ? "animate-spin" : ""}`}
 					/>
 					{loading ? "Analyzing..." : "Refresh"}
 				</button>

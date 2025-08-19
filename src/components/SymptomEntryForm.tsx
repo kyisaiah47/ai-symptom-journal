@@ -94,15 +94,17 @@ export default function SymptomEntryForm({ onEntryAdded }: Props) {
 	};
 
 	return (
-		<div className="p-8 from-amber-25 to-orange-25 ">
-			<h3 className="text-2xl font-bold text-amber-900 mb-6 flex items-center">
-				<span className="mr-3">📝</span>
+		<div className="p-8">
+			<h3 className="text-2xl font-bold text-amber-900 mb-8 flex items-center gap-2">
+				<span className="inline-flex items-center justify-center h-8 w-8 rounded-full bg-orange-100 text-orange-600 mr-2">
+					📝
+				</span>
 				Log New Symptoms
 			</h3>
 
 			<form
 				onSubmit={handleSubmit}
-				className="space-y-6"
+				className="space-y-8"
 			>
 				{/* Date */}
 				<div>
@@ -113,7 +115,7 @@ export default function SymptomEntryForm({ onEntryAdded }: Props) {
 						type="date"
 						value={date}
 						onChange={(e) => setDate(e.target.value)}
-						className="w-full px-4 py-3 border-2 border-amber-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-500 bg-amber-50 text-amber-900 shadow-inner"
+						className="w-full px-4 py-3 border-2 border-amber-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 bg-amber-50 text-amber-900 shadow-inner"
 					/>
 				</div>
 
@@ -122,19 +124,22 @@ export default function SymptomEntryForm({ onEntryAdded }: Props) {
 					<label className="block text-sm font-medium text-amber-800 mb-3">
 						Symptoms (select all that apply)
 					</label>
-					<div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+					<div className="grid grid-cols-2 md:grid-cols-3 gap-4">
 						{commonSymptoms.map((symptom) => (
 							<button
 								key={symptom}
 								type="button"
 								onClick={() => handleSymptomToggle(symptom)}
-								className={`px-4 py-3 rounded-xl text-sm font-medium transition-all shadow-sm ${
+								className={`px-4 py-3 rounded-2xl text-base font-semibold transition-all duration-150 shadow-sm group ${
 									selectedSymptoms.includes(symptom)
-										? "bg-gradient-to-r from-amber-600 to-orange-600 text-white shadow-lg transform scale-105"
-										: "bg-amber-100 text-amber-800 hover:bg-amber-200 border border-amber-300"
+										? "bg-gradient-to-r from-orange-400 to-amber-600 text-white shadow-lg scale-105 border-2 border-orange-500"
+										: "bg-amber-100 text-amber-800 hover:bg-orange-100 border border-amber-300 group-hover:shadow-md"
 								}`}
 							>
-								{symptom}
+								<span className="inline-flex items-center gap-2">
+									<AlertCircle className="h-4 w-4 text-orange-500" />
+									{symptom}
+								</span>
 							</button>
 						))}
 					</div>

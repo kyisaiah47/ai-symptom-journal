@@ -48,12 +48,12 @@ export default function HealthTimeline({ entries }: Props) {
 
 	if (entries.length === 0) {
 		return (
-			<div className="p-6 text-center">
-				<Calendar className="h-12 w-12 text-amber-400 mx-auto mb-4" />
-				<h3 className="text-lg font-medium text-amber-900 mb-2">
+			<div className="p-8 text-center bg-amber-50 border border-amber-200 rounded-2xl shadow-md mb-8">
+				<Calendar className="h-14 w-14 text-orange-500 mx-auto mb-4" />
+				<h3 className="text-2xl font-bold text-amber-900 mb-3 flex items-center justify-center gap-2">
 					No Entries Yet
 				</h3>
-				<p className="text-amber-700">
+				<p className="text-lg text-amber-700 mb-2">
 					Start logging your symptoms to see your health timeline.
 				</p>
 			</div>
@@ -61,28 +61,29 @@ export default function HealthTimeline({ entries }: Props) {
 	}
 
 	return (
-		<div className="p-6">
-			<div className="flex justify-between items-center mb-6">
-				<h3 className="text-lg font-semibold text-amber-900">
+		<div className="p-8">
+			<div className="flex justify-between items-center mb-8">
+				<h3 className="text-2xl font-bold text-amber-900 flex items-center gap-2">
+					<Calendar className="h-7 w-7 text-orange-500" />
 					Health Timeline
 				</h3>
-				<div className="flex bg-amber-100 rounded-lg p-1">
+				<div className="flex bg-amber-100 rounded-xl p-2 shadow-sm gap-2">
 					<button
 						onClick={() => setViewMode("timeline")}
-						className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
+						className={`px-4 py-2 rounded-lg text-base font-semibold transition-all duration-150 ${
 							viewMode === "timeline"
-								? "bg-gradient-to-r from-orange-100 to-red-100 text-orange-800 shadow-sm"
-								: "text-amber-600 hover:text-amber-800"
+								? "bg-gradient-to-r from-orange-100 to-red-100 text-orange-800 shadow-md scale-105"
+								: "text-amber-600 hover:text-amber-800 hover:bg-orange-50"
 						}`}
 					>
 						Timeline
 					</button>
 					<button
 						onClick={() => setViewMode("chart")}
-						className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
+						className={`px-4 py-2 rounded-lg text-base font-semibold transition-all duration-150 ${
 							viewMode === "chart"
-								? "bg-gradient-to-r from-orange-100 to-red-100 text-orange-800 shadow-sm"
-								: "text-amber-600 hover:text-amber-800"
+								? "bg-gradient-to-r from-orange-100 to-red-100 text-orange-800 shadow-md scale-105"
+								: "text-amber-600 hover:text-amber-800 hover:bg-orange-50"
 						}`}
 					>
 						Chart
@@ -153,7 +154,7 @@ export default function HealthTimeline({ entries }: Props) {
 						.map((entry, index) => (
 							<div
 								key={entry.id}
-								className="border border-amber-200 rounded-lg p-4 hover:shadow-md transition-shadow cursor-pointer"
+								className="border border-amber-200 rounded-2xl p-6 mb-4 bg-amber-50 shadow-sm hover:shadow-lg transition-all cursor-pointer"
 								style={{
 									background:
 										"linear-gradient(135deg, #fefcf7 0%, #fef7ed 100%)",
@@ -213,15 +214,17 @@ export default function HealthTimeline({ entries }: Props) {
 			{/* Entry Detail Modal */}
 			{selectedEntry && (
 				<div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-					<div className="bg-white rounded-lg max-w-2xl w-full max-h-[80vh] overflow-y-auto">
-						<div className="p-6">
-							<div className="flex justify-between items-start mb-4">
-								<h4 className="text-lg font-semibold text-gray-900">
+					<div className="bg-amber-50 rounded-2xl max-w-2xl w-full max-h-[80vh] overflow-y-auto shadow-xl">
+						<div className="p-8">
+							<div className="flex justify-between items-start mb-6">
+								<h4 className="text-xl font-bold text-amber-900 flex items-center gap-2">
+									<Clock className="h-6 w-6 text-orange-500" />
 									Entry Details
 								</h4>
 								<button
 									onClick={() => setSelectedEntry(null)}
-									className="text-gray-400 hover:text-gray-600"
+									className="text-orange-400 hover:text-orange-600 text-2xl font-bold rounded-full bg-orange-100 px-3 py-1 transition-all"
+									aria-label="Close"
 								>
 									✕
 								</button>
@@ -229,10 +232,10 @@ export default function HealthTimeline({ entries }: Props) {
 
 							<div className="space-y-4">
 								<div>
-									<label className="block text-sm font-medium text-gray-700 mb-1">
+									<label className="block text-sm font-medium text-amber-800 mb-1">
 										Date
 									</label>
-									<p className="text-gray-900">
+									<p className="text-amber-900 font-semibold">
 										{format(
 											new Date(selectedEntry.date),
 											"EEEE, MMMM do, yyyy"
@@ -241,14 +244,14 @@ export default function HealthTimeline({ entries }: Props) {
 								</div>
 
 								<div>
-									<label className="block text-sm font-medium text-gray-700 mb-2">
+									<label className="block text-sm font-medium text-amber-800 mb-2">
 										Symptoms
 									</label>
 									<div className="flex flex-wrap gap-2">
 										{selectedEntry.symptoms.map((symptom, idx) => (
 											<span
 												key={idx}
-												className="px-3 py-1 bg-gradient-to-r from-orange-100 to-red-100 text-orange-800 text-sm rounded-full"
+												className="px-3 py-1 bg-gradient-to-r from-orange-200 to-red-100 text-orange-800 text-base rounded-full shadow-sm"
 											>
 												{symptom}
 											</span>
@@ -257,16 +260,16 @@ export default function HealthTimeline({ entries }: Props) {
 								</div>
 
 								<div>
-									<label className="block text-sm font-medium text-gray-700 mb-1">
+									<label className="block text-sm font-medium text-amber-800 mb-1">
 										Severity
 									</label>
 									<div className="flex items-center space-x-3">
 										<div
-											className={`w-4 h-4 rounded-full ${getSeverityColor(
+											className={`w-5 h-5 rounded-full shadow ${getSeverityColor(
 												selectedEntry.severity
 											)}`}
 										></div>
-										<span className="text-gray-900">
+										<span className="text-orange-900 font-semibold text-base">
 											{getSeverityText(selectedEntry.severity)} (
 											{selectedEntry.severity}/8)
 										</span>
@@ -275,20 +278,20 @@ export default function HealthTimeline({ entries }: Props) {
 
 								{selectedEntry.notes && (
 									<div>
-										<label className="block text-sm font-medium text-gray-700 mb-1">
+										<label className="block text-sm font-medium text-amber-800 mb-1">
 											Notes
 										</label>
-										<p className="text-gray-900 bg-gray-50 p-3 rounded-lg">
+										<p className="text-amber-900 bg-amber-100 p-4 rounded-xl shadow-sm text-base">
 											{selectedEntry.notes}
 										</p>
 									</div>
 								)}
 
 								<div>
-									<label className="block text-sm font-medium text-gray-700 mb-1">
+									<label className="block text-sm font-medium text-amber-800 mb-1">
 										Recorded
 									</label>
-									<p className="text-sm text-gray-600">
+									<p className="text-base text-orange-700 font-semibold">
 										{format(new Date(selectedEntry.created_at), "PPpp")}
 									</p>
 								</div>
