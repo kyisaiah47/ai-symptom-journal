@@ -68,7 +68,7 @@ export default function AIInsights({ entries }: Props) {
 		<div className="p-8">
 			<div className="flex justify-between items-center mb-8">
 				<h3 className="text-2xl font-bold text-amber-900 flex items-center gap-2">
-					<Brain className="h-7 w-7 text-orange-500" />
+					<Brain className="h-8 w-8 bg-orange-100 text-orange-600 rounded-full p-1 mr-2" />
 					AI Health Insights
 				</h3>
 				<button

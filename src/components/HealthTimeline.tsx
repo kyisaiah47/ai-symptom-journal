@@ -64,7 +64,7 @@ export default function HealthTimeline({ entries }: Props) {
 		<div className="p-8">
 			<div className="flex justify-between items-center mb-8">
 				<h3 className="text-2xl font-bold text-amber-900 flex items-center gap-2">
-					<Calendar className="h-7 w-7 text-orange-500" />
+					<Calendar className="h-8 w-8 bg-orange-100 text-orange-600 rounded-full p-1 mr-2" />
 					Health Timeline
 				</h3>
 				<div className="flex bg-amber-100 rounded-xl p-2 shadow-sm gap-2">
